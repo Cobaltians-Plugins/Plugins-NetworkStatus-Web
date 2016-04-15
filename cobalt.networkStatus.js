@@ -21,8 +21,8 @@
         init: function (options) {
             cobalt.networkStatus = {
                 getStatus: this.getStatus.bind(this),
-                startStatusMonitoring: this.startStatusMonitoring.bind(this),
-                stopStatusMonitoring: this.stopStatusMonitoring.bind(this),
+                startMonitoring: this.startMonitoring.bind(this),
+                stopMonitoring: this.stopMonitoring.bind(this),
                 onStatusChanged: this.defaultHandlers.onStatusChanged,
                 status: this.status
             };
@@ -35,11 +35,14 @@
                 cobalt.networkStatus.onStatusChanged = options.onStatusChanged;
         },
 
-        startStatusMonitoring: function (options) {
+        startMonitoring: function (callback) {
+            if (typeof callback == 'function')
+                cobalt.networkStatus.onStatusChanged = callback;
+
             this.send('startStatusMonitoring');
         },
 
-        stopStatusMonitoring: function () {
+        stopMonitoring: function () {
             this.send('stopStatusMonitoring');
         },
 
