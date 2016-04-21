@@ -11,9 +11,6 @@
         status: {
             WIFI: 'wifi',
             MOBILE: 'mobile',
-            ETHERNET: 'ethernet',
-            VPN: 'vpn',
-            BLUETOOTH: 'bluetooth',
             UNKNOWN: 'unknown',
             NONE: 'none'
         },
