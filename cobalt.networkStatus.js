@@ -28,15 +28,15 @@
             if (typeof callback == 'function')
                 cobalt.networkStatus.onStatusChanged = callback;
 
-            this.send('startStatusMonitoring');
+            cobalt.plugins.send(this, 'startStatusMonitoring');
         },
 
         stopMonitoring: function () {
-            this.send('stopStatusMonitoring');
+            cobalt.plugins.send(this, 'stopStatusMonitoring');
         },
 
         getStatus: function (callback) {
-            this.send('getStatus', {}, function (data) {
+            cobalt.plugins.send(this, 'getStatus', {}, function (data) {
                 if (typeof callback == 'function')
                     callback(data.status);
                 else
@@ -55,10 +55,6 @@
                     cobalt.log(this.name, ': unknown action ', json.action);
                     break;
             }
-        },
-
-        send: function (action, data, callback) {
-            cobalt.send({ type: 'plugin', name: this.name, action: action, data: data }, callback);
         }
     };
 
