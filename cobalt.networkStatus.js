@@ -1,7 +1,9 @@
 (function (cobalt) {
     var plugin = {
-        name: 'networkStatus',
-
+        classes: {
+        	ios:'CobaltNetworkStatusPlugin',
+			android: 'io.kristal.networkstatusplugin.NetworkStatusPlugin'
+        },
         defaultHandlers: {
             onStatusChanged: function (status) {
                 cobalt.log('Network status updated: ' + status);
