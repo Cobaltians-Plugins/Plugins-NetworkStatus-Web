@@ -1,5 +1,6 @@
 (function(cobalt) {
   var plugin = {
+    name: 'CobaltNetworkStatusPlugin',
     classes: {
       ios: 'CobaltNetworkStatusPlugin',
       android: 'io.kristal.networkstatusplugin.NetworkStatusPlugin'
