@@ -42,7 +42,7 @@
     },
 
     handleEvent: function(json) {
-      switch (json && json.action) {
+      switch (json && json.data && json.data.action) {
         case 'onStatusChanged':
           if (typeof cobalt.networkStatus.onStatusChanged === 'function')
             cobalt.networkStatus.onStatusChanged(json.data.status);
