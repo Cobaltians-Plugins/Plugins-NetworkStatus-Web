@@ -28,7 +28,9 @@
       };
     },
     startMonitoring: function(callback) {
-      cobalt.networkStatus.onStatusChanged = callback;
+      if (callback){
+        cobalt.networkStatus.onStatusChanged = callback;
+      }
       cobalt.plugins.send(this, 'startStatusMonitoring');
     },
 
@@ -37,7 +39,9 @@
     },
 
     getStatus: function(callback) {
-      cobalt.networkStatus.onStatusChanged = callback;
+      if (cobalt) {
+        cobalt.networkStatus.onStatusChanged = callback;
+      }
       cobalt.plugins.send(this, 'getStatus', {});
     },
 
