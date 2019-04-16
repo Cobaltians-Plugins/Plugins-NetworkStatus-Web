@@ -74,7 +74,6 @@
     },
 
     handleEvent: function(json) {
-      cobalt.log('received JSON', json);
       switch (json && json.data && json.data.action) {
         case 'onStateChanged':
           if (typeof cobalt.batteryStatus.onStateChanged === 'function'){
