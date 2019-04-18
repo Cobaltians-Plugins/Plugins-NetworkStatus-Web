@@ -31,27 +31,14 @@
       if (callback){
         cobalt.networkStatus.onStatusChanged = callback;
       }
-      cobalt.plugins.send(this, 'startStatusMonitoring');
+      cobalt.plugins.send(this, 'startStatusMonitoring', {}, cobalt.networkStatus.onStatusChanged);
     },
 
     stopMonitoring: function() {
       cobalt.plugins.send(this, 'stopStatusMonitoring');
     },
-
     getStatus: function(callback) {
-      if (cobalt) {
-        cobalt.networkStatus.onStatusChanged = callback;
-      }
-      cobalt.plugins.send(this, 'getStatus', {});
-    },
-
-    handleEvent: function(json) {
-      switch (json && json.data && json.data.action) {
-        case 'onStatusChanged':
-          if (typeof cobalt.networkStatus.onStatusChanged === 'function')
-            cobalt.networkStatus.onStatusChanged(json.data.status);
-          break;
-      }
+      cobalt.plugins.send(this, 'getStatus', {}, callback);
     }
   };
   cobalt.plugins.register(plugin);
