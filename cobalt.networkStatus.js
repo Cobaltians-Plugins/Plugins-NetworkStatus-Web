@@ -39,6 +39,14 @@
     },
     getStatus: function(callback) {
       cobalt.plugins.send(this, 'getStatus', {}, callback);
+    },
+    handleEvent: function(event) {
+      switch (event && event.action) {
+        case 'onStatusChanged':
+          if (typeof cobalt.networkStatus.onStatusChanged === 'function')
+            cobalt.networkStatus.onStatusChanged(event.data);
+          break;
+      }
     }
   };
   cobalt.plugins.register(plugin);
