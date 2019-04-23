@@ -31,7 +31,7 @@
       if (callback){
         cobalt.networkStatus.onStatusChanged = callback;
       }
-      cobalt.plugins.send(this, 'startStatusMonitoring', {}, cobalt.networkStatus.onStatusChanged);
+      cobalt.plugins.send(this, 'startStatusMonitoring');
     },
 
     stopMonitoring: function() {
